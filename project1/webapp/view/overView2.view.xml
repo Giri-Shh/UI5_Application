@@ -1,0 +1,81 @@
+<mvc:View controllerName="uiapp.project1.controller.overView2" xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+    
+   <App >
+        <pages>
+            <Page >
+                <content>
+                <Toolbar >
+                    <Button text="{i18n>back}" icon="sap-icon://nav-back" press="onPressOverView2Back"></Button>
+                    <ToolbarSpacer ></ToolbarSpacer>
+                    <Button text="{i18n>export}" icon="sap-icon://paper-plane" press="onPressAllOverView"></Button>
+                </Toolbar>
+                
+  <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='80%' width="100%" vizType='bar'>
+                
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{overView2>}" id="idChart2">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="name"
+                                value="{overView2>name}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="mock"
+                                value="{overView2>mock}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                        values="mock" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="name" />
+                </viz:feeds>
+               
+            </viz:VizFrame>
+            <Table id="overTab2" items="{overView2>}">
+                <columns>
+                    <Column >
+                        <Text text="MOCK TYPE"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="EMPNAME"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="RATING"></Text> 
+                    </Column>
+                    <Column >
+                        <Text text="REVIWED DATE"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="REVIEWR ID"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="REVIEWR NAME"></Text> 
+                    </Column>
+                    <Column >
+                        <Text text="FEEDBACK"></Text> 
+                    </Column>
+                </columns>
+                <ColumnListItem >
+                        <cells>
+                            <Text text="{overView2>mockType}"></Text>
+                            <Text text="{overView2>name}"></Text>
+                            <Text text="{overView2>mock}"></Text>
+                            <Text text="{overView2>rDate}"></Text>
+                            <Text text="{overView2>reviewrId}"></Text>
+                            <Text text="{overView2>reviewName}"></Text>
+                            <Text text="{overView2>feedBack}"></Text>
+                        </cells>
+                </ColumnListItem>
+            </Table>
+                
+                </content>
+            </Page>
+        </pages>
+   </App>
+</mvc:View>
